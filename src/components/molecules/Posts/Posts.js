@@ -11,187 +11,187 @@ import { PostModalList, PostModalUl } from '../../atoms/PostModal/PostModal';
 // import Modal from '../Modal/Modal';
 
 const BackDrop = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 10;
-    background-color: black;
-    opacity: 0.4;
-    background: (0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background-color: black;
+  opacity: 0.4;
+  background: (0, 0, 0, 0.75);
 `;
 
 const PostList = styled.li`
-    width: 100%;
-    display: flex;
-    gap: 12px;
+  width: 100%;
+  display: flex;
+  gap: 12px;
 `;
 
 const ImgProfileLogo = styled.img`
-    height: 42px;
-    border-radius: 100%;
-    max-width: 42px;
+  height: 42px;
+  border-radius: 100%;
+  max-width: 42px;
 `;
 
 const PostBox = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 4px;
 `;
 
 const PostWrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const PostDiv = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 `;
 
 const UserName = styled.strong`
-    font-family: 'Pretendard_Medium';
-    line-height: 18px;
+  font-family: 'Pretendard_Medium';
+  line-height: 18px;
 `;
 
 const UserId = styled.div`
-    font-size: 12px;
-    color: ${defaultTheme.palette.gray3};
+  font-size: 12px;
+  color: ${defaultTheme.palette.gray3};
 `;
 
 const ContentWrapper = styled.div`
-    line-height: 18px;
-    display: flex;
-    flex-direction: column;
-    padding-top: ${props => (props.imgSrc ? '16px' : 0)};
+  line-height: 18px;
+  display: flex;
+  flex-direction: column;
+  padding-top: ${props => (props.imgSrc ? '16px' : 0)};
 `;
 
 const PostImg = styled.img`
-    width: 304px;
-    height: 228px;
-    border-radius: 10px;
-    object-fit: cover;
-    visibility: ${props => (props.imgSrc ? true : 'none')};
+  width: 304px;
+  height: 228px;
+  border-radius: 10px;
+  object-fit: cover;
+  visibility: ${props => (props.imgSrc ? true : 'none')};
 `;
 
 const LikeComment = styled.div`
-    display: flex;
+  display: flex;
 `;
 
 const HeartSvg = styled(HeartIcon)`
-    margin-right: 6px;
+  margin-right: 6px;
 `;
 
 const HeartFillSvg = styled(HeartIconFill)`
-    margin-right: 6px;
+  margin-right: 6px;
 `;
 
 const CommentSvg = styled(CommentIcon)`
-    margin: 0 6px 0 16px;
+  margin: 0 6px 0 16px;
 `;
 
 const ProfileBadge = styled(ProfileLogo)`
-    min-width: 36px;
+  min-width: 36px;
 `;
 
 const MoreBtn = styled.button`
-    cursor: pointer;
-    position: absolute;
-    right: 16px;
+  cursor: pointer;
+  position: absolute;
+  right: 16px;
 `;
 
 const DateDiv = styled.div`
-    font-size: 10px;
-    line-height: 12px;
-    color: ${defaultTheme.palette.gray3};
-    padding-top: 2.5px;
+  font-size: 10px;
+  line-height: 12px;
+  color: ${defaultTheme.palette.gray3};
+  padding-top: 2.5px;
 `;
 
 const Count = styled.p`
-    font-size: ${defaultTheme.fontSize.sm};
-    line-height: ${defaultTheme.fontSize.sm};
-    padding: 4px 0;
-    color: ${defaultTheme.palette.gray3};
+  font-size: ${defaultTheme.fontSize.sm};
+  line-height: ${defaultTheme.fontSize.sm};
+  padding: 4px 0;
+  color: ${defaultTheme.palette.gray3};
 `;
 
 // 얘도 빼서 쓸 예정..
 const postDate = date => {
-    const newDate = new Date(date);
-    const postedDate = `${newDate.getFullYear()}년 ${newDate.getMonth() + 1}월 ${newDate.getDate()}일`;
+  const newDate = new Date(date);
+  const postedDate = `${newDate.getFullYear()}년 ${newDate.getMonth() + 1}월 ${newDate.getDate()}일`;
 
-    return postedDate;
+  return postedDate;
 };
 
 export default function Posts({
-    id,
-    userIcon,
-    nickname,
-    userId,
-    children,
-    date,
-    imgSrc,
-    heartsCount,
-    hearted,
-    commentsCount,
-    onComment,
-    deleteHeart,
-    postHeart,
+  id,
+  userIcon,
+  nickname,
+  userId,
+  children,
+  date,
+  imgSrc,
+  heartsCount,
+  hearted,
+  commentsCount,
+  onComment,
+  deleteHeart,
+  postHeart,
 }) {
-    const check = useRef();
-    const [isHearted, setIsHearted] = useState(false);
-    const [modal, setModal] = useState(false);
-    const navigate = useNavigate();
+  const check = useRef();
+  const [isHearted, setIsHearted] = useState(false);
+  const [modal, setModal] = useState(false);
+  const navigate = useNavigate();
 
-    const handleModal = () => {
-        setModal(true);
-    };
+  const handleModal = () => {
+    setModal(true);
+  };
 
-    const handleBackdrop = e => {
-        e.stopPropagation();
-        const clicked = e.target.closest('.postmodal');
+  const handleBackdrop = e => {
+    e.stopPropagation();
+    const clicked = e.target.closest('.postmodal');
 
-        if (!clicked) {
-            setModal(false);
-        }
-    };
+    if (!clicked) {
+      setModal(false);
+    }
+  };
 
-    const checked = e => {
-        setModal(false);
-    };
+  const checked = e => {
+    setModal(false);
+  };
 
-    const handleDetail = e => navigate(`/post/${id}`);
+  const handleDetail = e => navigate(`/post/${id}`);
 
-    return (
+  return (
+    <>
+      {modal && (
         <>
-            {modal && (
-                <>
-                    <BackDrop onClick={handleBackdrop} />
-                    <PostModalUl className="postmodal">
-                        <PostModalList onClick={checked}>삭제</PostModalList>
-                        <PostModalList onClick={checked}>수정</PostModalList>
-                    </PostModalUl>
-                </>
-            )}
-            {/* {modal && <Modal onBack={handleBackdrop} onModal="post" />} */}
-            <PostList onClick={handleDetail}>
-                {userIcon ? <ImgProfileLogo src={userIcon} /> : <ProfileBadge />}
-                <PostBox>
-                    <PostWrapper>
-                        <PostDiv>
-                            <UserName>{nickname}</UserName>
-                            <UserId>{`@${userId}`}</UserId>
-                        </PostDiv>
-                        <MoreBtn onClick={handleModal}>
-                            <img src={MoreIcon} alt="더보기" />
-                        </MoreBtn>
-                    </PostWrapper>
-                    <ContentWrapper>{children}</ContentWrapper>
-                    {imgSrc && <PostImg src={imgSrc} />}
-                    <LikeComment>
-                        {/* {hearted ? (
+          <BackDrop onClick={handleBackdrop} />
+          <PostModalUl className="postmodal">
+            <PostModalList onClick={checked}>삭제</PostModalList>
+            <PostModalList onClick={checked}>수정</PostModalList>
+          </PostModalUl>
+        </>
+      )}
+      {/* {modal && <Modal onBack={handleBackdrop} onModal="post" />} */}
+      <PostList onClick={handleDetail}>
+        {userIcon ? <ImgProfileLogo src={userIcon} /> : <ProfileBadge />}
+        <PostBox>
+          <PostWrapper>
+            <PostDiv>
+              <UserName>{nickname}</UserName>
+              <UserId>{`@${userId}`}</UserId>
+            </PostDiv>
+            <MoreBtn onClick={handleModal}>
+              <img src={MoreIcon} alt="더보기" />
+            </MoreBtn>
+          </PostWrapper>
+          <ContentWrapper>{children}</ContentWrapper>
+          {imgSrc && <PostImg src={imgSrc} />}
+          <LikeComment>
+            {/* {hearted ? (
                             <div onClick={deleteHeart}>
                                 <HeartFillSvg />
                             </div>
@@ -200,24 +200,24 @@ export default function Posts({
                                 <HeartSvg />
                             </div>
                         )} */}
-                        {isHearted ? (
-                            <div onClick={() => setIsHearted(false)}>
-                                <HeartFillSvg />
-                            </div>
-                        ) : (
-                            <div onClick={() => setIsHearted(true)}>
-                                <HeartSvg />
-                            </div>
-                        )}
-                        <Count>{heartsCount}</Count>
-                        <div className="commentClick" onClick={onComment}>
-                            <CommentSvg />
-                        </div>
-                        <Count>{commentsCount}</Count>
-                    </LikeComment>
-                    <DateDiv>{postDate(date)}</DateDiv>
-                </PostBox>
-            </PostList>
-        </>
-    );
+            {isHearted ? (
+              <div onClick={() => setIsHearted(false)}>
+                <HeartFillSvg />
+              </div>
+            ) : (
+              <div onClick={() => setIsHearted(true)}>
+                <HeartSvg />
+              </div>
+            )}
+            <Count>{heartsCount}</Count>
+            <div className="commentClick" onClick={onComment}>
+              <CommentSvg />
+            </div>
+            <Count>{commentsCount}</Count>
+          </LikeComment>
+          <DateDiv>{postDate(date)}</DateDiv>
+        </PostBox>
+      </PostList>
+    </>
+  );
 }

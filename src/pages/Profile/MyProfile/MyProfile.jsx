@@ -10,15 +10,15 @@ import OnSale from '../../../components/organisms/Sale/OnSale';
 const MyProfileWrapper = styled.div``;
 
 export default function MyProfile() {
-    const accountName = useContext(AuthContext).accountName;
+	const { accountName } = useContext(AuthContext);
 
-    return (
-        <MyProfileWrapper>
-            <TopNavBarBasic />
-            <ProfileMyOrg />
-            <OnSale accountName={accountName} />
-            <PostList accountName={accountName} />
-            <BottomNavBarBasic type="profile" />
-        </MyProfileWrapper>
-    );
+	return (
+		<MyProfileWrapper>
+			<TopNavBarBasic />
+			<ProfileMyOrg />
+			<OnSale accountName={accountName} />
+			<PostList accountName={accountName} />
+			<BottomNavBarBasic type="profile" />
+		</MyProfileWrapper>
+	);
 }

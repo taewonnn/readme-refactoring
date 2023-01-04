@@ -6,78 +6,79 @@ import pretendardBold from '../../assets/font/Pretendard_Bold.woff2';
 import defaultTheme from './themes/default';
 
 const GlobalStyle = createGlobalStyle`
-@font-face {
-    font-family: 'Pretendard_Regular';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Pretendard_Regular'), url(${pretendardRegular}) format('woff2');
-}
+	@font-face {
+		font-family: 'Pretendard_Regular';
+		font-style: normal;
+		font-weight: 400;
+		src: local('Pretendard_Regular'), url(${pretendardRegular}) format('woff2');
+	}
 
-@font-face {
-    font-family: 'Pretendard_Medium';
-    font-style: normal;
-    font-weight: 500;
-    src: local('Pretendard_Medium'), url(${pretendardMedium}) format('woff2');
-}
+	@font-face {
+		font-family: 'Pretendard_Medium';
+		font-style: normal;
+		font-weight: 500;
+		src: local('Pretendard_Medium'), url(${pretendardMedium}) format('woff2');
+	}
 
-@font-face {
-    font-family: 'Pretendard_Bold';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Pretendard_Bold'), url(${pretendardBold}) format('woff2');
-}
+	@font-face {
+		font-family: 'Pretendard_Bold';
+		font-style: normal;
+		font-weight: 700;
+		src: local('Pretendard_Bold'), url(${pretendardBold}) format('woff2');
+	}
 
-${reset}
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+	${reset}
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
 
-body {
-    font-family: 'Pretendard_Regular';
-    font-size: 14px;
-    font-weight: 400;
-}
+	body {
+		font-family: 'Pretendard_Regular';
+		font-size: 14px;
+		font-weight: 400;
+	}
 
-button {
-    font-family: 'Pretendard_Regular';
-    font-size: inherit;
-    border: none;
-    background-color: ${defaultTheme.palette.white}; 
-}
+	button {
+		font-family: 'Pretendard_Regular';
+		font-size: inherit;
+		border: none;
+		background-color: ${defaultTheme.palette.white};
+	}
 
-input {
-    font-family: 'Pretendard_Regular';
-    font-size: inherit;
-    border: none;
-    &:focus {
-        outline: none;
-    }
-}
+	input {
+		font-family: 'Pretendard_Regular';
+		font-size: inherit;
+		border: none;
 
-li {
-    list-style: none;
-}
+		&:focus {
+			outline: none;
+		}
+	}
 
-a {
-    text-decoration: none;
-    color: ${defaultTheme.palette.primary};
-}
+	li {
+		list-style: none;
+	}
 
-textarea {
-    border: none;
-    overflow: auto;
-    outline: none;
+	a {
+		text-decoration: none;
+		color: ${defaultTheme.palette.primary};
+	}
 
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
+	textarea {
+		border: none;
+		overflow: auto;
+		outline: none;
 
-    resize: none;
-    font-family: 'Pretendard_Regular';
-    font-size: 14px;
-}
+		-webkit-box-shadow: none;
+		-moz-box-shadow: none;
+		box-shadow: none;
+
+		resize: none;
+		font-family: 'Pretendard_Regular', sans-serif;
+		font-size: 14px;
+	}
 `;
 
 export default GlobalStyle;

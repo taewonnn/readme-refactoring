@@ -10,15 +10,15 @@ import BottomNavBarBasic from '../../../components/molecules/BottomNavBarBasic/B
 const YourProfileWrapper = styled.div``;
 
 export default function YourProfile() {
-    const { accountName } = useParams();
+	const { accountName } = useParams();
 
-    return (
-        <YourProfileWrapper>
-            <TopNavBarBasic />
-            <ProfileYourOrg accountName={accountName} />
-            <OnSale accountName={accountName} />
-            <PostList accountName={accountName} />
-            <BottomNavBarBasic />
-        </YourProfileWrapper>
-    );
+	return (
+		<YourProfileWrapper>
+			<TopNavBarBasic />
+			<ProfileYourOrg accountName={accountName} />
+			<OnSale accountName={accountName} />
+			<PostList accountName={accountName} />
+			<BottomNavBarBasic />
+		</YourProfileWrapper>
+	);
 }

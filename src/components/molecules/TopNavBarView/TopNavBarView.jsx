@@ -5,15 +5,15 @@ import FeedList from '../../atoms/FeedList/FeedList';
 import FeedPhoto from '../../atoms/FeedPhoto/FeedPhoto';
 
 const TopNavBarWrapBgModi = styled(TopNavBarWrapBg)`
-    justify-content: flex-end;
-    position: relative;
+	justify-content: flex-end;
+	position: relative;
 `;
 
 export default function TopNavBarView({ childToParent, isList }) {
-    return (
-        <TopNavBarWrapBgModi>
-            <FeedList childToParent={childToParent} isList={isList} />
-            <FeedPhoto childToParent={childToParent} isList={isList} />
-        </TopNavBarWrapBgModi>
-    );
+	return (
+		<TopNavBarWrapBgModi>
+			<FeedList childToParent={childToParent} isList={isList} />
+			<FeedPhoto childToParent={childToParent} isList={isList} />
+		</TopNavBarWrapBgModi>
+	);
 }
