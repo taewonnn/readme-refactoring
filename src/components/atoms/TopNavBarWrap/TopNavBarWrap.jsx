@@ -7,7 +7,7 @@ export const TopNavBarHeader = styled.header`
 	width: 100%;
 	top: 0;
 	left: 0;
-	padding: 0px 18px;
+	//padding: 0px 18px;
 	background-color: ${defaultTheme.palette.white};
 	z-index: 10;
 `;
