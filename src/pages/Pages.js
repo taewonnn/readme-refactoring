@@ -9,7 +9,7 @@ import Splash from './Splash/Splash';
 import Home from './Home/Home';
 import YourProfile from './Profile/YourProfile/YourProfile';
 import MyProfile from './Profile/MyProfile/MyProfile';
-import ModifyProfile from './ModifyProfile/ModifyProfile';
+import ModifyProfile from './Profile/ModifyProfile/ModifyProfile';
 import Followers from './Followers/Followers';
 import Followings from './Followings/Followings';
 import Chat from './Chat/ChatList';
