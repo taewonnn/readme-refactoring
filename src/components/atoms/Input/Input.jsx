@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledInput } from './style';
 
-export default function Input({ type, id, placeholder = '', value, width, required, borderWidth, ...props }) {
+export default function Input({ type, id, placeholder = '', value, width, required, borderWidth }) {
 	return (
 		<StyledInput
 			type={type}
