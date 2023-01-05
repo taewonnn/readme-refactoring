@@ -17,7 +17,6 @@
     "prettier/prettier": ["error", { "tabWidth": 2 }],
     "import/prefer-default-export": "off",
     "react/react-in-jsx-scope": "off",
-    "react/no-unused-vars": "warn",
     "react/prop-types": "off",
     "react/no-children-prop": "off",
     "react/no-array-index-key": "off",
