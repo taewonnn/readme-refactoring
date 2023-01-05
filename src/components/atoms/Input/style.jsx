@@ -24,3 +24,4 @@ export const StyledInput = styled.input`
 		margin: 0;
 	}
 `;
+export const StyledImgInput = styled.input``;
