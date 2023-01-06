@@ -14,23 +14,21 @@ export default function StyledForm({
 	fontSize,
 	lineHeight,
 	color,
-	LabelValue,
+	value,
 	type,
 	id,
 	placeholder,
-	inputValue,
 	width,
 	borderWidth,
 	required,
 }) {
 	return (
 		<FormWrapper>
-			<Label htmlFor={htmlFor} fontSize={fontSize} lineHeight={lineHeight} color={color} LabelValue={LabelValue} />
+			<Label htmlFor={htmlFor} fontSize={fontSize} lineHeight={lineHeight} color={color} value={value} />
 			<Input
 				type={type}
 				id={id}
 				placeholder={placeholder}
-				inputValue={inputValue}
 				width={width}
 				borderWidth={borderWidth}
 				required={required}
