@@ -9,10 +9,8 @@ const ImgBoxWrapper = styled.div`
 	width: 110px;
 	height: 110px;
 	border-radius: 50%;
-	margin: 0 auto;
-	margin-top: 30px;
-	margin-bottom: 30px;
-	background-image: url(${readmeImg});
+	margin: 30px auto;
+	background-image: url(${props => props.image});
 	background-size: cover;
 `;
 
@@ -21,9 +19,10 @@ const UploadImg = styled.img`
 	left: 80px;
 	top: 80px;
 `;
-export default function StyledImgBox() {
+export default function StyledImgBox({ image }) {
+	console.log(image);
 	return (
-		<ImgBoxWrapper>
+		<ImgBoxWrapper image={image}>
 			<StyledImgLabel htmlFor="selectImg">
 				<UploadImg src={selectProfile} alt="" />
 			</StyledImgLabel>
