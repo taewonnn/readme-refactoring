@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import TopNavBarSave from '../../../components/molecules/TopNavBarSave/TopNavBarSave';
 import readmeImg from '../../../assets/logo/README_color.png';
 import StyledImgBox from '../../../components/molecules/StyledImgBox/StyledImgBox';
-import StyledForm from '../../../components/molecules/StyledForm/StyledForm';
+import InputBox from '../../../components/molecules/StyledForm/InputBox';
+import AuthContext from '../../../store/auth-context';
 
 const ImgBoxWrapper = styled.div`
 	width: 110px;
 	height: 110px;
 	border-radius: 50%;
-	margin: 0 auto;
-	margin-top: 30px;
-	margin-bottom: 30px;
+	margin: 30px auto;
 	background-image: url(${readmeImg});
 	background-size: cover;
 `;
@@ -23,62 +23,85 @@ const UploadImg = styled.img`
 `;
 
 export default function ModifyProfile() {
+	const makeProps = (htmlFor, id, placeholder, required, value, inputValue) => ({
+		htmlFor,
+		id,
+		placeholder,
+		required,
+		value,
+		inputValue,
+		fontSize: '12px',
+		color: 'black',
+		type: 'text',
+	});
 	// input 값 자식에게 내려주기
-	const [data, setData] = useState({
-		userName: '',
-		userId: '',
+	const [userInfo, setUserInfo] = useState({
+		username: '',
+		accountname: '',
 		intro: '',
+		image: '',
 	});
 
-	// 데이터 보내기
-	// 1.토큰 설정 / 2. URl 설정 / 3. API 통신
-
+	// 기존 데이터 가져오기
 	// 1.토큰 설정
-	const token =
-		'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWQyN2YxYjJjYjIwNTY2Mzc3NmIxMiIsImV4cCI6MTY3NzQ3NjM0OSwiaWF0IjoxNjcyMjkyMzQ5fQ.p6HfItN748doyV70fqnQOWwuIfWUBC2i2GiDT4XTqao';
+	const { token } = useContext(AuthContext);
 
 	// 2. URL 설정
 	const API_HOST = process.env.REACT_APP_BASE_URL;
 
-	// 3. API 통신 - Post
+	// 3. API 통신 - GET
+	const config = {
+		method: 'get',
+		url: `${API_HOST}/user/myinfo`,
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	};
 
+	useEffect(() => {
+		axios(config)
+			.then(res => {
+				setUserInfo({ ...res.data.user });
+				console.log(res.data.user);
+			})
+			.catch(err => {
+				console.error(err);
+			});
+	}, []);
+
+	// 버튼 클릭 시 PUT
+	// 1. 입력값을 console에 나오게 확인
+	// 2. 그 입력값을 보내면됨
+	const chkVal = e => {
+		console.log(userInfo.username);
+	};
 	return (
-		<>
+		<form onSubmit={() => {}}>
 			<TopNavBarSave />
-
-			<StyledImgBox />
-
-			<StyledForm
-				htmlFor="userName"
-				fontSize="12px"
-				color="black"
-				id="userName"
-				type="text"
-				plac
-				eholder="2-10자 이내로 작성해주세요"
-				required="required"
-				value="사용자 이름"
+			<StyledImgBox image={userInfo.image} />
+			<InputBox
+				props={makeProps(
+					'userName',
+					'userName',
+					'2-10자 이내로 작성해주세요.',
+					'required',
+					'사용자 이름',
+					userInfo.username,
+				)}
 			/>
-			<StyledForm
-				htmlFor="userId"
-				fontSize="12px"
-				color="black"
-				id="userId"
-				type="text"
-				placeholder="영문,숫자,특수문만 사용 가능합니다."
-				required="required"
-				value="사용자 ID"
+			<InputBox
+				props={makeProps(
+					'userId',
+					'userId',
+					'영문,숫자,특수문자만 가능합니다.',
+					'required',
+					'사용자 ID',
+					userInfo.accountname,
+				)}
 			/>
-			<StyledForm
-				htmlFor="intro"
-				fontSize="12px"
-				color="black"
-				id="intro"
-				type="text"
-				placeholder="자신과 판매할 상품에 대해 소개해주세요"
-				required="required"
-				value="소개"
+			<InputBox
+				props={makeProps('intro', 'intro', '자신과 판매할 상품에 대해 소개해주세요.', null, '소개', userInfo.intro)}
 			/>
-		</>
+		</form>
 	);
 }
