@@ -30,6 +30,18 @@ export default function ModifyProfile() {
 		intro: '',
 	});
 
+	// 데이터 보내기
+	// 1.토큰 설정 / 2. URl 설정 / 3. API 통신
+
+	// 1.토큰 설정
+	const token =
+		'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWQyN2YxYjJjYjIwNTY2Mzc3NmIxMiIsImV4cCI6MTY3NzQ3NjM0OSwiaWF0IjoxNjcyMjkyMzQ5fQ.p6HfItN748doyV70fqnQOWwuIfWUBC2i2GiDT4XTqao';
+
+	// 2. URL 설정
+	const API_HOST = process.env.REACT_APP_BASE_URL;
+
+	// 3. API 통신 - Post
+
 	return (
 		<>
 			<TopNavBarSave />
@@ -42,7 +54,8 @@ export default function ModifyProfile() {
 				color="black"
 				id="userName"
 				type="text"
-				placeholder="2-10자 이내로 작성해주세요"
+				plac
+				eholder="2-10자 이내로 작성해주세요"
 				required="required"
 				value="사용자 이름"
 			/>
