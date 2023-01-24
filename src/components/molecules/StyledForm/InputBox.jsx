@@ -22,7 +22,6 @@ export default function InputBox({ props }) {
 
 	useEffect(() => {
 		setInpValue(props.inputValue);
-		console.log(props.inputValue);
 		console.log(props);
 		console.log(inpValue);
 	}, []);
