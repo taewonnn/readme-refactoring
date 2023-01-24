@@ -36,6 +36,7 @@ export default function UserList({ urlPath }) {
 		followListReq();
 	}, []);
 
-	// eslint-disable-next-line react/jsx-no-useless-fragment
-	return <>{followers.length ? followers.map((follower, i) => <UserListItem follower={follower} key={i} />) : null}</>;
+	return (
+		<div>{followers.length ? followers.map((follower, i) => <UserListItem follower={follower} key={i} />) : null}</div>
+	);
 }

@@ -47,7 +47,6 @@ export default function PostList({ accountName, ...props }) {
 				console.log(res.data.post);
 			})
 			.catch(err => console.error(err));
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	// 피드형 버튼 누르면 피드형 리스트 보여주고, 사진형 버튼 누르면 사진형 리스트 보여주기(기본형은 피드형)
@@ -58,37 +57,36 @@ export default function PostList({ accountName, ...props }) {
 	}
 
 	return (
-		<>
+		<div>
 			{posts.length ? (
 				<PostListWrapper>
+					{/* eslint-disable-next-line react/jsx-no-bind */}
 					<TopNavBarView childToParent={childToParent} isList={isList} />
-					<>
-						{isList ? (
-							<PostWrapper>
-								{posts.map((post, i) => (
-									<Posts
-										key={i}
-										id={post.id}
-										userIcon={post.author.image}
-										nickname={post.author.username}
-										userId={post.author.accountname}
-										date={post.createdAt}
-										children={post.content}
-										// 이미지가 있는지 없는지 확인 후 있을 때만 보여지게(* 삼항연산자가 없을 경우 이미지가 없는 게시물에도 이미지 액박이 나옴)
-										imgSrc={post.image ? post.image : null}
-									/>
-								))}
-							</PostWrapper>
-						) : (
-							<PhotoWrapper>
-								{posts.map((post, i) => (post.image ? <PostImg key={i} imgSrc={post.image} /> : null))}
-							</PhotoWrapper>
-						)}
-					</>
+					{isList ? (
+						<PostWrapper>
+							{posts.map((post, i) => (
+								<Posts
+									key={i}
+									id={post.id}
+									userIcon={post.author.image}
+									nickname={post.author.username}
+									userId={post.author.accountname}
+									date={post.createdAt}
+									children={post.content}
+									// 이미지가 있는지 없는지 확인 후 있을 때만 보여지게(* 삼항연산자가 없을 경우 이미지가 없는 게시물에도 이미지 액박이 나옴)
+									imgSrc={post.image ? post.image : null}
+								/>
+							))}
+						</PostWrapper>
+					) : (
+						<PhotoWrapper>
+							{posts.map((post, i) => (post.image ? <PostImg key={i} imgSrc={post.image} /> : null))}
+						</PhotoWrapper>
+					)}
 				</PostListWrapper>
 			) : (
 				<Empty />
 			)}
-		</>
+		</div>
 	);
 }

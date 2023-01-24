@@ -8,6 +8,7 @@ import { ReactComponent as CommentIcon } from '../../../assets/icons/message-cir
 import MoreIcon from '../../../assets/icons/feed-more-option.svg';
 import defaultTheme from '../../../commons/style/themes/default';
 import { PostModalList, PostModalUl } from '../../atoms/PostModal/PostModal';
+import Button from '../../atoms/Button/Button';
 // import Modal from '../Modal/Modal';
 
 const BackDrop = styled.div`
@@ -201,18 +202,18 @@ export default function Posts({
                             </div>
                         )} */}
             {isHearted ? (
-              <div onClick={() => setIsHearted(false)}>
+              <Button onClick={() => setIsHearted(false)}>
                 <HeartFillSvg />
-              </div>
+              </Button>
             ) : (
-              <div onClick={() => setIsHearted(true)}>
+              <Button onClick={() => setIsHearted(true)}>
                 <HeartSvg />
-              </div>
+              </Button>
             )}
             <Count>{heartsCount}</Count>
-            <div className="commentClick" onClick={onComment}>
+            <Button className="commentClick" onClick={onComment}>
               <CommentSvg />
-            </div>
+            </Button>
             <Count>{commentsCount}</Count>
           </LikeComment>
           <DateDiv>{postDate(date)}</DateDiv>

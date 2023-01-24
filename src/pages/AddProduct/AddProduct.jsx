@@ -190,11 +190,13 @@ export default function AddProductPage() {
 	const AddComma = AddPrice => {
 		// eslint-disable-next-line no-shadow
 		const comma = AddPrice => {
+			// eslint-disable-next-line no-param-reassign
 			AddPrice = String(AddPrice);
 			AddPrice.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
 		};
 		// eslint-disable-next-line no-shadow
 		const uncomma = AddPrice => {
+			// eslint-disable-next-line no-param-reassign
 			AddPrice = String(AddPrice);
 			AddPrice.replace(/[^\d]+/g, '');
 		};
@@ -203,7 +205,7 @@ export default function AddProductPage() {
 	};
 
 	const URL_REGEX =
-		/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+		/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/;
 
 	// const AddSave =({})=>
 	// const [ErrorAddLink,setErrorAddLink] = useState('')

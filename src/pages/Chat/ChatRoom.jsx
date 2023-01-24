@@ -111,6 +111,7 @@ export default function ChatRooomPage() {
 
 	const handleCheckValid = event => {
 		setInput(event.target.value);
+		// eslint-disable-next-line no-unused-expressions
 		event.target.value ? setIsValid(false) : setIsValid(true);
 	};
 
