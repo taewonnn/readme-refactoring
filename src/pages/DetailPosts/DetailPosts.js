@@ -112,7 +112,7 @@ export default function DetailPosts() {
   };
 
   return (
-    <>
+    <div>
       <TopNavBarBasic />
       <PostLists>
         {post && (
@@ -146,9 +146,9 @@ export default function DetailPosts() {
           ))}
         </CommentsList>
       ) : (
-        <></>
+        <div />
       )}
-      {!writeComment ? <></> : <CommentBar getComments={getComments} />}
-    </>
+      {!writeComment ? <div /> : <CommentBar getComments={getComments} />}
+    </div>
   );
 }
